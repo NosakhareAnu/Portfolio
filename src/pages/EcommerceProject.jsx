@@ -1,7 +1,18 @@
 import React from 'react';
 import { ExternalLink, Mail, MessageCircle, ArrowRight } from 'lucide-react';
+import ecom1 from '../assets/projects/ecommerce/ecom-1.png';
+import ecom2 from '../assets/projects/ecommerce/ecom-2.png';
+import ecom3 from '../assets/projects/ecommerce/ecom-3.png';
+import ecom4 from '../assets/projects/ecommerce/ecom-4.png';
 
 const EcommerceProject = ({ navigate }) => {
+  const screenshots = [
+    { img: ecom1, caption: 'Home Page' },
+    { img: ecom2, caption: 'Shopping Cart' },
+    { img: ecom3, caption: 'Orders Page' },
+    { img: ecom4, caption: 'Login Page' }
+  ];
+
   return (
     <div className="project-detail">
       <div className="project-detail-container">
@@ -37,6 +48,19 @@ const EcommerceProject = ({ navigate }) => {
               ))}
             </div>
           </section>
+
+          <section className="detail-section">
+            <h2>Project Screenshots</h2>
+            <div className="screenshots-grid">
+              {screenshots.map((screenshot, idx) => (
+                <div key={idx} className="screenshot-item">
+                  <img src={screenshot.img} alt={screenshot.caption} />
+                  <p className="screenshot-caption">{screenshot.caption}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
           <section className="detail-section">
             <h2>Technologies Used</h2>
             <div className="tech-detail">

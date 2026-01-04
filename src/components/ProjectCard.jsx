@@ -5,7 +5,15 @@ const ProjectCard = ({ project, onViewDetails }) => {
   return (
     <div className="project-card">
       <div className="project-image">
-        <div className="project-image-placeholder">Project Preview</div>
+        {project.image ? (
+          <img 
+            src={project.image} 
+            alt={project.name}
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        ) : (
+          <div className="project-image-placeholder">Project Preview</div>
+        )}
       </div>
       <div className="project-content">
         <h3 className="project-title">{project.name}</h3>

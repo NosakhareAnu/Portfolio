@@ -1,6 +1,8 @@
 import React from 'react';
 import ProjectCard from '../components/ProjectCard';
 import CTA from '../components/CTA';
+import tryonImg from '../assets/projects/tryon/tryon-1.png';
+import ecomImg from '../assets/projects/ecommerce/ecom-1.png';
 
 const Home = ({ navigate }) => {
   const projects = [
@@ -10,7 +12,8 @@ const Home = ({ navigate }) => {
       description: 'Designed the user interface for a web application that allows users to upload images and visualize clothing items using AI. Targets both consumer and business use cases.',
       techStack: ['Figma', 'UI/UX Design'],
       hasDetails: false,
-      liveLink: null
+      liveLink: null,
+      image: tryonImg
     },
     {
       id: 'ecommerce',
@@ -18,13 +21,13 @@ const Home = ({ navigate }) => {
       description: 'Built a full-featured ecommerce website with product browsing, cart management, order placement, and admin inventory controls. Demonstrates real-world architecture patterns.',
       techStack: ['React', 'Firebase', 'Vercel'],
       hasDetails: true,
-      liveLink: 'https://ecom-school-store.web.app/'
+      liveLink: 'https://ecom-school-store.web.app/',
+      image: ecomImg
     }
   ];
 
   return (
     <>
-      {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">
           <div className="hero-badge">Available for opportunities</div>
@@ -36,7 +39,6 @@ const Home = ({ navigate }) => {
         </div>
       </section>
 
-      {/* About Section */}
       <section id="about" className="about">
         <div className="about-container">
           <h2 className="section-title">About Me</h2>
@@ -49,7 +51,6 @@ const Home = ({ navigate }) => {
         </div>
       </section>
 
-      {/* Projects Section */}
       <section id="projects" className="projects">
         <div className="projects-container">
           <div className="projects-header">
@@ -63,14 +64,13 @@ const Home = ({ navigate }) => {
               <ProjectCard
                 key={project.id}
                 project={project}
-                onViewDetails={() => navigate('/projects/ecommerce')}
+                onViewDetails={() => navigate(`/projects/${project.id}`)}
               />
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
       <CTA />
     </>
   );

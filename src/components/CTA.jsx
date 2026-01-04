@@ -5,7 +5,7 @@ const CTA = () => {
   return (
     <section id="contact" className="cta">
       <div className="cta-container">
-        <h2 className="cta-title">Let's Work Together</h2>
+        <h2 className="cta-title">Let's Work Together </h2>
         <p className="cta-description">
           Have a project in mind? Let's bring it to life.
         </p>
