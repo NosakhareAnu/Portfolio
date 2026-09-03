@@ -1,7 +1,6 @@
 export const profile = {
   name: 'Nosakhare Festus-Olagbende',
   shortName: 'Nosakhare',
-  initials: 'NF',
   title: 'Software Developer & Product Designer',
   introduction:
     'I design thoughtful digital experiences and build the systems behind them — from product flows and interfaces to mobile applications, APIs, and data.',
@@ -19,23 +18,81 @@ export const contactLinks = [
   {
     id: 'email',
     label: 'Email',
-    display: 'anuolu2000@gmail.com',
-    href: 'mailto:anuolu2000@gmail.com',
+    actionLabel: 'Email me',
+    display: 'nosakhareda@gmail.com',
+    href: 'mailto:nosakhareda@gmail.com',
     external: false,
   },
   {
     id: 'linkedin',
     label: 'LinkedIn',
-    display: 'URL pending',
-    href: null,
+    actionLabel: 'LinkedIn',
+    display: 'linkedin.com/in/nosakhareanu',
+    href: 'https://www.linkedin.com/in/nosakhareanu/',
     external: true,
   },
   {
     id: 'github',
     label: 'GitHub',
-    display: 'URL pending',
-    href: null,
+    actionLabel: 'GitHub',
+    display: 'github.com/NosakhareAnu',
+    href: 'https://github.com/NosakhareAnu',
     external: true,
+  },
+];
+
+export const experience = [
+  {
+    role: 'Full-Stack Web Development Intern',
+    company: 'OyaSync',
+    employmentType: 'Internship',
+    dates: 'Jul 2025 – Dec 2025',
+    duration: '6 months',
+    location: 'Lagos, Nigeria · Remote',
+    highlights: [
+      'Contributed to team development projects using React, Tailwind CSS, Firebase, and REST APIs across frontend and backend features.',
+      'Implemented authentication flows, data handling, and responsive interface components as part of product development tasks.',
+      'Collaborated with senior developers and mentors during sprint reviews, applying feedback to improve code structure, functionality, and implementation quality.',
+    ],
+  },
+  {
+    role: 'Product Design Intern',
+    company: 'Cyncra Technologies',
+    employmentType: 'Internship',
+    dates: 'Jul 2025 – Aug 2025',
+    duration: '2 months',
+    location: 'Lagos, Nigeria · Remote',
+    highlights: [
+      'Designed and refined web and mobile interface layouts in Figma while contributing to shared design systems.',
+      'Contributed to a website redesign, aligning interface decisions with updated brand and user experience goals.',
+      'Participated in design reviews, team meetings, and collaborative ideation sessions to refine product interfaces and maintain consistency.',
+    ],
+  },
+  {
+    role: 'Media & Content Team Lead',
+    company: 'School of Science and Technology, Pan-Atlantic University',
+    employmentType: 'Volunteer · Part-time',
+    dates: 'Mar 2025 – Oct 2025',
+    duration: '8 months',
+    location: 'Lagos, Nigeria · Hybrid',
+    highlights: [
+      'Led a small team of video editors and graphic designers producing visual content for university communications and social media.',
+      'Edited and reviewed more than 10 promotional videos and short-form content pieces.',
+      'Coordinated with the communications team to maintain consistent visual direction and messaging across campaigns.',
+    ],
+  },
+  {
+    role: 'Frontend Web Development Intern',
+    company: 'OyaSync',
+    employmentType: 'Internship',
+    dates: 'Jul 2024 – Sep 2024',
+    duration: '3 months',
+    location: 'Lagos, Nigeria · Remote',
+    highlights: [
+      'Assisted in developing and maintaining responsive web interfaces using React, HTML, and CSS.',
+      'Translated design requirements into functional, user-friendly interface components.',
+      'Collaborated with team members during implementation and code reviews, applying feedback to improve consistency and performance.',
+    ],
   },
 ];
 
@@ -48,6 +105,7 @@ export const navigation = [
   { label: 'Work', hash: 'selected-work' },
   { label: 'Capabilities', hash: 'capabilities' },
   { label: 'About', hash: 'about' },
+  { label: 'Experience', hash: 'experience' },
   { label: 'Education', hash: 'education' },
   { label: 'Contact', hash: 'contact' },
 ];

@@ -1,8 +1,11 @@
 import React from 'react';
-import { Mail, MessageCircle, ArrowRight } from 'lucide-react';
+import { Mail, ArrowRight } from 'lucide-react';
 import tryon1 from '../assets/projects/tryon/tryon-1.png';
 import tryon2 from '../assets/projects/tryon/tryon-2.png';
 import tryon3 from '../assets/projects/tryon/tryon-3.png';
+import { contactLinks } from '../data/portfolio';
+
+const emailLink = contactLinks.find((link) => link.id === 'email');
 
 const TryOnProject = ({ navigate }) => {
   const screenshots = [
@@ -75,13 +78,9 @@ const TryOnProject = ({ navigate }) => {
               <h2>Interested in this project?</h2>
               <p>Let's discuss how I can help with your next project.</p>
               <div className="cta-box-buttons">
-                <a href="mailto:anuolu2000@gmail.com" className="btn-cta btn-email">
+                <a href={emailLink.href} className="btn-cta btn-email">
                   <Mail size={18} />
                   Email Me
-                </a>
-                <a href="https://wa.me/2348029467548" target="_blank" rel="noopener noreferrer" className="btn-cta btn-whatsapp">
-                  <MessageCircle size={18} />
-                  WhatsApp
                 </a>
               </div>
             </div>

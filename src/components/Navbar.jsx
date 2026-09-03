@@ -12,9 +12,6 @@ function Navbar() {
     <header className="site-header">
       <div className="nav-shell">
         <Link className="brand" to="/" onClick={closeMenu} aria-label={`${profile.name}, home`}>
-          <span className="brand-mark" aria-hidden="true">
-            {profile.initials}
-          </span>
           <span className="brand-name">{profile.shortName}</span>
         </Link>
 

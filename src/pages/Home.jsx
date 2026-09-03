@@ -1,6 +1,7 @@
 import { ArrowDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Contact from '../components/Contact';
+import ExperienceList from '../components/ExperienceList';
 import ProjectCard from '../components/ProjectCard';
 import { capabilities, profile, projects } from '../data/portfolio';
 
@@ -94,6 +95,22 @@ function Home() {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="experience section" id="experience" aria-labelledby="experience-title">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <p className="section-kicker">Experience</p>
+              <h2 id="experience-title">Work experience</h2>
+            </div>
+            <p className="section-intro">
+              Product, engineering, and creative work across collaborative teams.
+            </p>
+          </div>
+
+          <ExperienceList />
         </div>
       </section>
 

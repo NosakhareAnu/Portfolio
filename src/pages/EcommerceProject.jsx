@@ -1,9 +1,12 @@
 import React from 'react';
-import { ExternalLink, Mail, MessageCircle, ArrowRight } from 'lucide-react';
+import { ExternalLink, Mail, ArrowRight } from 'lucide-react';
 import ecom1 from '../assets/projects/ecommerce/ecom-1.png';
 import ecom2 from '../assets/projects/ecommerce/ecom-2.png';
 import ecom3 from '../assets/projects/ecommerce/ecom-3.png';
 import ecom4 from '../assets/projects/ecommerce/ecom-4.png';
+import { contactLinks } from '../data/portfolio';
+
+const emailLink = contactLinks.find((link) => link.id === 'email');
 
 const EcommerceProject = ({ navigate }) => {
   const screenshots = [
@@ -99,13 +102,9 @@ const EcommerceProject = ({ navigate }) => {
               <h2>Interested in this project?</h2>
               <p>Let's discuss how I can help with your next project.</p>
               <div className="cta-box-buttons">
-                <a href="mailto:anuolu2000@gmail.com" className="btn-cta btn-email">
+                <a href={emailLink.href} className="btn-cta btn-email">
                   <Mail size={18} />
                   Email Me
-                </a>
-                <a href="https://wa.me/2348029467548" target="_blank" rel="noopener noreferrer" className="btn-cta btn-whatsapp">
-                  <MessageCircle size={18} />
-                  WhatsApp
                 </a>
               </div>
             </div>
