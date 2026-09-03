@@ -1,28 +1,29 @@
-import React, { useState } from 'react';
-import Navbar from './components/Navbar';
+import { Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
+import Navbar from './components/Navbar';
+import ScrollToLocation from './components/ScrollToLocation';
 import Home from './pages/Home';
-import EcommerceProject from './pages/EcommerceProject';
+import NotFound from './pages/NotFound';
+import ProjectPage from './pages/ProjectPage';
 import './styles/global.css';
 
 function App() {
-  const [currentPath, setCurrentPath] = useState('/');
-
-  const navigate = (path) => {
-    setCurrentPath(path);
-    window.scrollTo(0, 0);
-  };
-
   return (
-    <div>
-      <Navbar navigate={navigate} currentPath={currentPath} />
-      {currentPath === '/' ? (
-        <Home navigate={navigate} />
-      ) : (
-        <EcommerceProject navigate={navigate} />
-      )}
+    <>
+      <ScrollToLocation />
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
+      <Navbar />
+      <main id="main-content" tabIndex={-1}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects/:slug" element={<ProjectPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
 

@@ -1,45 +1,32 @@
-import React from 'react';
-import { ExternalLink, ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const ProjectCard = ({ project, onViewDetails }) => {
+function ProjectCard({ project }) {
   return (
-    <div className="project-card">
-      <div className="project-image">
-        {project.image ? (
-          <img 
-            src={project.image} 
-            alt={project.name}
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
-        ) : (
-          <div className="project-image-placeholder">Project Preview</div>
-        )}
+    <article className={`project-row${project.featured ? ' project-row-featured' : ''}`}>
+      <div className="project-index" aria-hidden="true">
+        {project.order}
       </div>
-      <div className="project-content">
-        <h3 className="project-title">{project.name}</h3>
-        <p className="project-description">{project.description}</p>
-        <div className="project-tech">
-          {project.techStack.map((tech, idx) => (
-            <span key={idx} className="tech-badge">{tech}</span>
+      <div className="project-copy">
+        <div className="project-labels">
+          <span className="project-type">{project.classification}</span>
+          <span className="project-context">{project.context}</span>
+        </div>
+        <h3>{project.name}</h3>
+        <p className="project-subtitle">{project.subtitle}</p>
+        <p className="project-description">{project.cardDescription}</p>
+        <ul className="discipline-list" aria-label={`${project.name} disciplines`}>
+          {project.disciplines.map((discipline) => (
+            <li key={discipline}>{discipline}</li>
           ))}
-        </div>
-        <div className="project-buttons">
-          {project.hasDetails && (
-            <button onClick={() => onViewDetails(project.id)} className="btn btn-primary">
-              View Details
-              <ArrowRight size={18} />
-            </button>
-          )}
-          {project.liveLink && (
-            <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
-              <ExternalLink size={16} />
-              Live Demo
-            </a>
-          )}
-        </div>
+        </ul>
       </div>
-    </div>
+      <Link className="project-link" to={`/projects/${project.slug}`} aria-label={`Open ${project.name} project page`}>
+        View project
+        <ArrowUpRight size={18} aria-hidden="true" />
+      </Link>
+    </article>
   );
-};
+}
 
 export default ProjectCard;

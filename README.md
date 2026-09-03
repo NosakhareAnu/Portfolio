@@ -1,89 +1,53 @@
-Personal Portfolio Website
+# Nosakhare Festus-Olagbende — Portfolio
 
-Name: Anuoluwapo Nosakhare Oluwadara Festus-Olagbende  
-Matric Number: 22120612986  
-Course: Computer Science  
-Project Type: Final Year Frontend Project  
-Deployment: Vercel
+Professional portfolio for Nosakhare Festus-Olagbende, a Software Developer & Product Designer focused on user-centered digital products.
 
----
+## Current foundation
 
-📌 Project Overview
+The homepage is organized around:
 
-This project is a personal portfolio website built as part of my final year frontend development assignment.  
-The goal of the project is to showcase who I am as a developer, highlight selected projects I have worked on, and demonstrate my ability to design, build, and deploy a responsive frontend application.
+- Hero and professional positioning
+- Selected Work
+- Capabilities
+- About
+- Education
+- Contact
 
-The website is clean, minimal, and production-ready, focusing on clarity, structure, and usability rather than excessive visual effects.
+TrackChow and Agrion are the current featured projects. TrackChow is identified as a built product, while Agrion is identified as a design exploration. Both stable case-study routes contain the supplied professional copy; TrackChow screenshot slots and external project links remain pending.
 
----
+## Technology
 
-🎯 Project Objectives
+- React 19
+- React Router
+- Vite
+- CSS
+- Lucide React
 
-- Present a clear and professional developer profile
-- Showcase completed projects with proper structure
-- Demonstrate multi-page navigation using React routing
-- Build a responsive layout that works across devices
-- Deploy a live, accessible website
+## Local development
 
----
+```powershell
+npm ci
+npm run dev
+```
 
-🛠️ Tech Stack
+Quality checks:
 
-- React (Frontend framework)
-- Vite (Build tool)
-- CSS (Custom styling)
-- Firebase (Referenced in project showcase)
-- Vercel (Deployment)
+```powershell
+npm run lint
+npm run build
+```
 
----
+## Content architecture
 
-📂 Features & Pages
+Shared profile, project, capability, navigation, and contact information lives in `src/data/portfolio.js`. Reusable layout components consume that data, while React Router provides shareable project URLs.
 
-1.  About Me Section
+## Project routes
 
-- Introduction to who I am
-- My role as a fullstack developer and product designer
-- My technical interests in system architecture and system design
+- `/projects/trackchow`
+- `/projects/agrion`
 
-2.  Projects Section
-    Displays two main projects:
+`vercel.json` provides the single-page application fallback needed when a project URL is opened or refreshed directly on Vercel.
 
-- Try-On Virtualiser (UI Design) – Figma-based UI/UX project
-- Ecommerce Website – Functional React-based ecommerce platform
+## Legacy material
 
-Each project includes:
-
-- Name
-- Description
-- Tech stack
-- Screenshots
-- Link (where available)
-
-3.  Dedicated Project Details Page
-    A full, detailed page for the **Ecommerce Website**, including:
-
-- Problem statement
-- Full project description
-- Features
-- Screenshots
-- Technologies used
-- Lessons learned
-
-4.  Call to Action (CTA)
-
-- Email contact button
-- WhatsApp contact button
-
-📱 Responsiveness
-
-The website is fully responsive and optimized for:
-
-- Mobile devices
-- Tablets
-- Desktop screens
-
-Layouts adjust smoothly without overflow or broken UI.
-
-🚀 Deployment
-
-The project is deployed on Vercel.
+The previous Try-On Virtualiser and SchoolMerch project source and assets remain in the repository for reference, but they are not part of the public route tree or featured homepage.

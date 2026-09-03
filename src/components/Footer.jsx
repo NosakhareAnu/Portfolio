@@ -1,16 +1,20 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
+import { profile } from '../data/portfolio';
 
-const Footer = () => {
+function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer-container">
-        <p className="footer-text">
-          © 2026 Anuoluwapo Festus-Olagbende. All rights reserved.
-        </p>
-        <p className="footer-matric">Matric Number: 22120612986</p>
+    <footer className="site-footer">
+      <div className="container footer-layout">
+        <div>
+          <Link className="footer-name" to="/">
+            {profile.name}
+          </Link>
+          <p>{profile.title}</p>
+        </div>
+        <p className="footer-note">© {new Date().getFullYear()} {profile.shortName}. Built with care.</p>
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;

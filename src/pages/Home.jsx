@@ -1,79 +1,124 @@
-import React from 'react';
+import { ArrowDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import Contact from '../components/Contact';
 import ProjectCard from '../components/ProjectCard';
-import CTA from '../components/CTA';
-import tryonImg from '../assets/projects/tryon/tryon-1.png';
-import ecomImg from '../assets/projects/ecommerce/ecom-1.png';
+import { capabilities, profile, projects } from '../data/portfolio';
 
-const Home = ({ navigate }) => {
-  const projects = [
-    {
-      id: 'tryon',
-      name: 'Try-On Virtualiser',
-      description: 'Designed the user interface for a web application that allows users to upload images and visualize clothing items using AI. Targets both consumer and business use cases.',
-      techStack: ['Figma', 'UI/UX Design'],
-      hasDetails: false,
-      liveLink: null,
-      image: tryonImg
-    },
-    {
-      id: 'ecommerce',
-      name: 'Ecommerce Platform',
-      description: 'Built a full-featured ecommerce website with product browsing, cart management, order placement, and admin inventory controls. Demonstrates real-world architecture patterns.',
-      techStack: ['React', 'Firebase', 'Vercel'],
-      hasDetails: true,
-      liveLink: 'https://ecom-school-store.web.app/',
-      image: ecomImg
-    }
-  ];
-
+function Home() {
   return (
     <>
-      <section className="hero">
-        <div className="hero-content">
-          <div className="hero-badge">Available for opportunities</div>
-          <h1 className="hero-title">
-            Anuoluwapo Nosakhare<br />Oluwadara Festus-Olagbende
-          </h1>
-          <p className="hero-subtitle">Final Year Computer Science Student</p>
-          <p className="hero-role">Fullstack Developer • Product Designer</p>
+      <section className="hero" aria-labelledby="hero-title">
+        <div className="container hero-layout">
+          <div className="hero-copy">
+            <p className="eyebrow">{profile.title}</p>
+            <h1 id="hero-title">{profile.name}</h1>
+            <p className="hero-introduction">{profile.introduction}</p>
+            <div className="hero-actions">
+              <Link className="button button-primary" to="/#selected-work">
+                View selected work
+                <ArrowDown size={18} aria-hidden="true" />
+              </Link>
+              <Link className="button button-secondary" to="/#contact">
+                Get in touch
+              </Link>
+            </div>
+          </div>
+
+          <aside className="hero-note" aria-label="Product approach">
+            <p>From product thinking to implementation.</p>
+            <ol>
+              <li><span>01</span> Understand</li>
+              <li><span>02</span> Design</li>
+              <li><span>03</span> Build</li>
+            </ol>
+          </aside>
         </div>
       </section>
 
-      <section id="about" className="about">
-        <div className="about-container">
-          <h2 className="section-title">About Me</h2>
-          <p className="about-text">
-            I am a final year Computer Science student with hands-on experience building real-world web applications. I work as a fullstack developer and product designer, with a strong interest in system architecture, system design, and scalable application development.
-          </p>
-          <p className="about-text">
-            I enjoy translating ideas into functional, well-structured digital products. My approach combines technical proficiency with thoughtful design, ensuring that the applications I build are both powerful and user-friendly. I'm passionate about creating solutions that solve real problems and deliver value to users.
-          </p>
-        </div>
-      </section>
-
-      <section id="projects" className="projects">
-        <div className="projects-container">
-          <div className="projects-header">
-            <h2 className="section-title">Featured Projects</h2>
-            <p className="projects-description">
-              A selection of work showcasing my skills and experience
+      <section className="work section" id="selected-work" aria-labelledby="work-title">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <p className="section-kicker">Selected work</p>
+              <h2 id="work-title">Built products and design explorations.</h2>
+            </div>
+            <p className="section-intro">
+              A focused selection of built product work and product design exploration, presented with the project context made clear.
             </p>
           </div>
-          <div className="projects-grid">
+
+          <div className="project-list">
             {projects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                onViewDetails={() => navigate(`/projects/${project.id}`)}
-              />
+              <ProjectCard key={project.slug} project={project} />
             ))}
           </div>
         </div>
       </section>
 
-      <CTA />
+      <section className="capabilities section section-dark" id="capabilities" aria-labelledby="capabilities-title">
+        <div className="container">
+          <div className="section-heading section-heading-light">
+            <div>
+              <p className="section-kicker">Capabilities</p>
+              <h2 id="capabilities-title">Working across product and implementation.</h2>
+            </div>
+            <p className="section-intro">
+              A focused combination of interface development, product design, and connected product thinking.
+            </p>
+          </div>
+
+          <div className="capability-grid">
+            {capabilities.map((capability) => (
+              <article className="capability" key={capability.title}>
+                <span aria-hidden="true">{capability.number}</span>
+                <h3>{capability.title}</h3>
+                <ul className="capability-list">
+                  {capability.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="about section" id="about" aria-labelledby="about-title">
+        <div className="container about-layout">
+          <div>
+            <p className="section-kicker">About</p>
+            <h2 id="about-title">A design-aware developer with a product mindset.</h2>
+          </div>
+          <div className="about-copy">
+            {profile.about.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="background section" id="education" aria-labelledby="background-title">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <p className="section-kicker">Background</p>
+              <h2 id="background-title">Education</h2>
+            </div>
+          </div>
+
+          <div className="background-list">
+            <article className="background-row">
+              <p>Education</p>
+              <h3>{profile.education.institution}</h3>
+              <span>{profile.education.qualification}</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <Contact />
     </>
   );
-};
+}
 
 export default Home;

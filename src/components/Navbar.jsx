@@ -1,57 +1,57 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { navigation, profile } from '../data/portfolio';
 
-const Navbar = ({ navigate, currentPath }) => {
+function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleNavigation = (path) => {
-    navigate(path);
-    setIsOpen(false);
-  };
+  const closeMenu = () => setIsOpen(false);
 
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        <ul className="navbar-menu">
-          <li>
-            <button onClick={() => handleNavigation('/')} className="navbar-link">
-              Home
-            </button>
-          </li>
-          <li>
-            <a href="#about" className="navbar-link">About</a>
-          </li>
-          <li>
-            <a href="#projects" className="navbar-link">Projects</a>
-          </li>
-          <li>
-            <a href="#contact" className="navbar-link">Contact</a>
-          </li>
-        </ul>
+    <header className="site-header">
+      <div className="nav-shell">
+        <Link className="brand" to="/" onClick={closeMenu} aria-label={`${profile.name}, home`}>
+          <span className="brand-mark" aria-hidden="true">
+            {profile.initials}
+          </span>
+          <span className="brand-name">{profile.shortName}</span>
+        </Link>
 
-        <button className="navbar-toggle" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        <nav className="desktop-nav" aria-label="Primary navigation">
+          {navigation.map((item) => (
+            <Link key={item.hash} to={`/#${item.hash}`}>
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
+          onClick={() => setIsOpen((open) => !open)}
+        >
+          {isOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
         </button>
 
-        {isOpen && (
-          <div className="navbar-mobile active">
-            <button onClick={() => handleNavigation('/')} className="navbar-link">
-              Home
-            </button>
-            <a href="#about" onClick={() => setIsOpen(false)} className="navbar-link">
-              About
-            </a>
-            <a href="#projects" onClick={() => setIsOpen(false)} className="navbar-link">
-              Projects
-            </a>
-            <a href="#contact" onClick={() => setIsOpen(false)} className="navbar-link">
-              Contact
-            </a>
-          </div>
-        )}
+        <nav
+          id="mobile-navigation"
+          className={`mobile-nav${isOpen ? ' is-open' : ''}`}
+          aria-label="Mobile navigation"
+          aria-hidden={!isOpen}
+        >
+          {navigation.map((item) => (
+            <Link key={item.hash} to={`/#${item.hash}`} onClick={closeMenu} tabIndex={isOpen ? 0 : -1}>
+              {item.label}
+            </Link>
+          ))}
+        </nav>
       </div>
-    </nav>
+    </header>
   );
-};
+}
 
 export default Navbar;

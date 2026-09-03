@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Mail, MessageCircle, ArrowRight } from 'lucide-react';
 import tryon1 from '../assets/projects/tryon/tryon-1.png';
 import tryon2 from '../assets/projects/tryon/tryon-2.png';
