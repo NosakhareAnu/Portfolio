@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
+import RevealOnScroll from './components/RevealOnScroll';
 import ScrollToLocation from './components/ScrollToLocation';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <ScrollToLocation />
+      <RevealOnScroll />
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>

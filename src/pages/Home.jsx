@@ -1,9 +1,24 @@
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, BadgeCheck, GraduationCap, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Contact from '../components/Contact';
 import ExperienceList from '../components/ExperienceList';
 import ProjectCard from '../components/ProjectCard';
-import { capabilities, profile, projects } from '../data/portfolio';
+import SectionHeading from '../components/SectionHeading';
+import { capabilities, contactLinks, profile, projects } from '../data/portfolio';
+
+const heroProfileLinks = contactLinks.filter((link) => link.external);
+const [firstName, ...remainingNameParts] = profile.name.split(' ');
+const remainingName = remainingNameParts.join(' ');
+
+const profileFacts = [
+  { icon: MapPin, label: 'Location', value: profile.location },
+  { icon: BadgeCheck, label: 'Work authorization', value: profile.workAuthorization },
+  {
+    icon: GraduationCap,
+    label: 'Education',
+    value: `${profile.education.qualification}, ${profile.education.institution}`,
+  },
+];
 
 function Home() {
   return (
@@ -11,10 +26,12 @@ function Home() {
       <section className="hero" aria-labelledby="hero-title">
         <div className="container hero-layout">
           <div className="hero-copy">
-            <p className="eyebrow">{profile.title}</p>
-            <h1 id="hero-title">{profile.name}</h1>
-            <p className="hero-introduction">{profile.introduction}</p>
-            <div className="hero-actions">
+            <p className="eyebrow hero-enter">{profile.title}</p>
+            <h1 id="hero-title" className="hero-enter">
+              <span>{firstName}</span> <span className="hero-name-remainder">{remainingName}</span>
+            </h1>
+            <p className="hero-introduction hero-enter">{profile.introduction}</p>
+            <div className="hero-actions hero-enter">
               <Link className="button button-primary" to="/#selected-work">
                 View selected work
                 <ArrowDown size={18} aria-hidden="true" />
@@ -25,28 +42,82 @@ function Home() {
             </div>
           </div>
 
-          <aside className="hero-note" aria-label="Product approach">
-            <p>From product thinking to implementation.</p>
-            <ol>
-              <li><span>01</span> Understand</li>
-              <li><span>02</span> Design</li>
-              <li><span>03</span> Build</li>
-            </ol>
+          <aside className="hero-profile hero-enter" aria-labelledby="hero-profile-title">
+            <p className="hero-profile-label" id="hero-profile-title">
+              Profile
+            </p>
+            <p className="hero-profile-copy">{profile.heroProfile}</p>
+            <ul className="hero-profile-facts">
+              <li>
+                <MapPin size={16} aria-hidden="true" />
+                {profile.location}
+              </li>
+              <li>
+                <BadgeCheck size={16} aria-hidden="true" />
+                {profile.workAuthorization}
+              </li>
+            </ul>
+            <div className="hero-profile-links">
+              {heroProfileLinks.map((link) => (
+                <a key={link.id} href={link.href} target="_blank" rel="noopener noreferrer">
+                  {link.label}
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                  <span className="visually-hidden"> (opens in a new tab)</span>
+                </a>
+              ))}
+            </div>
           </aside>
+        </div>
+      </section>
+
+      <section className="experience section section-surface" id="experience" aria-labelledby="experience-title">
+        <div className="container">
+          <SectionHeading
+            id="experience-title"
+            kicker="Experience"
+            title="Work experience"
+            intro="Product, engineering, and creative work across collaborative teams."
+          />
+          <ExperienceList />
+        </div>
+      </section>
+
+      <section className="capabilities section" id="capabilities" aria-labelledby="capabilities-title">
+        <div className="container">
+          <div className="capabilities-panel">
+            <SectionHeading
+              id="capabilities-title"
+              kicker="Capabilities"
+              title="Working across product and implementation."
+              intro="A focused combination of interface development, product design, and connected product thinking."
+              light
+            />
+
+            <div className="capability-grid">
+              {capabilities.map((capability) => (
+                <article className="capability" key={capability.title} data-reveal>
+                  <span aria-hidden="true">{capability.number}</span>
+                  <h3>{capability.title}</h3>
+                  <ul className="capability-list">
+                    {capability.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="work section" id="selected-work" aria-labelledby="work-title">
         <div className="container">
-          <div className="section-heading">
-            <div>
-              <p className="section-kicker">Selected work</p>
-              <h2 id="work-title">Built products and design explorations.</h2>
-            </div>
-            <p className="section-intro">
-              A focused selection of built product work and product design exploration, presented with the project context made clear.
-            </p>
-          </div>
+          <SectionHeading
+            id="work-title"
+            kicker="Selected work"
+            title="Built products and design explorations."
+            intro="A focused selection of built product work and product design exploration, with the context of each project made clear."
+          />
 
           <div className="project-list">
             {projects.map((project) => (
@@ -56,79 +127,28 @@ function Home() {
         </div>
       </section>
 
-      <section className="capabilities section section-dark" id="capabilities" aria-labelledby="capabilities-title">
-        <div className="container">
-          <div className="section-heading section-heading-light">
-            <div>
-              <p className="section-kicker">Capabilities</p>
-              <h2 id="capabilities-title">Working across product and implementation.</h2>
-            </div>
-            <p className="section-intro">
-              A focused combination of interface development, product design, and connected product thinking.
-            </p>
-          </div>
-
-          <div className="capability-grid">
-            {capabilities.map((capability) => (
-              <article className="capability" key={capability.title}>
-                <span aria-hidden="true">{capability.number}</span>
-                <h3>{capability.title}</h3>
-                <ul className="capability-list">
-                  {capability.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="about section" id="about" aria-labelledby="about-title">
+      <section className="about section section-surface" id="about" aria-labelledby="about-title">
         <div className="container about-layout">
-          <div>
+          <div data-reveal>
             <p className="section-kicker">About</p>
             <h2 id="about-title">A design-aware developer with a product mindset.</h2>
           </div>
-          <div className="about-copy">
+          <div className="about-copy" data-reveal>
             {profile.about.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
-          </div>
-        </div>
-      </section>
 
-      <section className="experience section" id="experience" aria-labelledby="experience-title">
-        <div className="container">
-          <div className="section-heading">
-            <div>
-              <p className="section-kicker">Experience</p>
-              <h2 id="experience-title">Work experience</h2>
-            </div>
-            <p className="section-intro">
-              Product, engineering, and creative work across collaborative teams.
-            </p>
-          </div>
-
-          <ExperienceList />
-        </div>
-      </section>
-
-      <section className="background section" id="education" aria-labelledby="background-title">
-        <div className="container">
-          <div className="section-heading">
-            <div>
-              <p className="section-kicker">Background</p>
-              <h2 id="background-title">Education</h2>
-            </div>
-          </div>
-
-          <div className="background-list">
-            <article className="background-row">
-              <p>Education</p>
-              <h3>{profile.education.institution}</h3>
-              <span>{profile.education.qualification}</span>
-            </article>
+            <dl className="fact-list" id="education">
+              {profileFacts.map((fact) => (
+                <div key={fact.label}>
+                  <dt>
+                    <fact.icon size={16} aria-hidden="true" />
+                    {fact.label}
+                  </dt>
+                  <dd>{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </section>

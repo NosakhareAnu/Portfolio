@@ -4,6 +4,10 @@ export const profile = {
   title: 'Software Developer & Product Designer',
   introduction:
     'I design thoughtful digital experiences and build the systems behind them — from product flows and interfaces to mobile applications, APIs, and data.',
+  heroProfile:
+    'Computer Science graduate working across software development and product design. I enjoy taking products from early ideas and user flows through interface design and implementation.',
+  location: 'Texas, USA',
+  workAuthorization: 'No visa sponsorship required',
   about: [
     "I'm a Computer Science graduate who enjoys working at the intersection of software engineering and product design. I like understanding how a product should work, designing an experience around that problem, and then turning those decisions into working software.",
     "My work ranges from mobile and web development to interface design and backend systems. I'm particularly interested in products where usability, thoughtful interaction design, and solid engineering all matter.",
@@ -13,6 +17,8 @@ export const profile = {
     qualification: 'B.Sc. Computer Science',
   },
 };
+
+export const defaultTitle = `${profile.name} — ${profile.title}`;
 
 export const contactLinks = [
   {
@@ -102,11 +108,10 @@ export const pendingLinks = {
 };
 
 export const navigation = [
-  { label: 'Work', hash: 'selected-work' },
-  { label: 'Capabilities', hash: 'capabilities' },
-  { label: 'About', hash: 'about' },
   { label: 'Experience', hash: 'experience' },
-  { label: 'Education', hash: 'education' },
+  { label: 'Capabilities', hash: 'capabilities' },
+  { label: 'Work', hash: 'selected-work' },
+  { label: 'About', hash: 'about' },
   { label: 'Contact', hash: 'contact' },
 ];
 

@@ -6,11 +6,11 @@ Professional portfolio for Nosakhare Festus-Olagbende, a Software Developer & Pr
 
 The homepage is organized around:
 
-- Hero and professional positioning
-- Selected Work
+- Hero and professional positioning (location and work authorization)
+- Work Experience
 - Capabilities
-- About
-- Education
+- Selected Work
+- About (including education)
 - Contact
 
 TrackChow and Agrion are the current featured projects. TrackChow is identified as a built product, while Agrion is identified as a design exploration. Both stable case-study routes contain the supplied professional copy; TrackChow screenshot slots and external project links remain pending.
@@ -50,4 +50,4 @@ Shared profile, project, capability, navigation, and contact information lives i
 
 ## Legacy material
 
-The previous Try-On Virtualiser and SchoolMerch project source and assets remain in the repository for reference, but they are not part of the public route tree or featured homepage.
+The previous Try-On Virtualiser and SchoolMerch pages and assets were removed from the working tree. They remain available in git history.

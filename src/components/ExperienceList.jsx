@@ -2,9 +2,9 @@ import { experience } from '../data/portfolio';
 
 function ExperienceList() {
   return (
-    <div className="experience-list">
+    <ol className="experience-list">
       {experience.map((entry) => (
-        <article className="experience-entry" key={`${entry.company}-${entry.role}-${entry.dates}`}>
+        <li className="experience-entry" key={`${entry.company}-${entry.role}-${entry.dates}`} data-reveal>
           <div className="experience-summary">
             <p className="experience-date">{entry.dates}</p>
             <h3>{entry.role}</h3>
@@ -20,9 +20,9 @@ function ExperienceList() {
               <li key={highlight}>{highlight}</li>
             ))}
           </ul>
-        </article>
+        </li>
       ))}
-    </div>
+    </ol>
   );
 }
 

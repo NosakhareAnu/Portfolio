@@ -9,7 +9,9 @@ function Footer() {
           <Link className="footer-name" to="/">
             {profile.name}
           </Link>
-          <p>{profile.title}</p>
+          <p>
+            {profile.title} · {profile.location}
+          </p>
         </div>
         <div className="footer-meta">
           <nav className="footer-links" aria-label="Professional links">
@@ -21,10 +23,13 @@ function Footer() {
                 rel={link.external ? 'noopener noreferrer' : undefined}
               >
                 {link.label}
+                {link.external && <span className="visually-hidden"> (opens in a new tab)</span>}
               </a>
             ))}
           </nav>
-          <p className="footer-note">© {new Date().getFullYear()} {profile.shortName}. Built with care.</p>
+          <p className="footer-note">
+            © {new Date().getFullYear()} {profile.name}
+          </p>
         </div>
       </div>
     </footer>

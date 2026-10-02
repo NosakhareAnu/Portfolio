@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
-import { projects } from '../data/portfolio';
+import { defaultTitle, profile, projects } from '../data/portfolio';
 import NotFound from './NotFound';
 
 function CaseStudyContent({ section }) {
@@ -27,7 +27,7 @@ function CaseStudyContent({ section }) {
       {section.items && (
         <div className="case-item-grid">
           {section.items.map((item, index) => (
-            <article className="case-item" key={item.title}>
+            <article className="case-item" key={item.title} data-reveal>
               <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
@@ -68,18 +68,19 @@ function ProjectPage() {
   const project = projects.find((item) => item.slug === slug);
 
   useEffect(() => {
-    document.title = project
-      ? `${project.name} — Nosakhare Festus-Olagbende`
-      : 'Page not found — Nosakhare Festus-Olagbende';
+    if (!project) return undefined;
+    document.title = `${project.name} — ${profile.name}`;
 
     return () => {
-      document.title = 'Nosakhare Festus-Olagbende — Software Developer & Product Designer';
+      document.title = defaultTitle;
     };
   }, [project]);
 
   if (!project) {
     return <NotFound />;
   }
+
+  const nextProject = projects[(projects.indexOf(project) + 1) % projects.length];
 
   return (
     <article className={`project-page${project.featured ? ' project-page-featured' : ''}`}>
@@ -89,10 +90,10 @@ function ProjectPage() {
             <ArrowLeft size={17} aria-hidden="true" />
             Selected work
           </Link>
-          <p className="eyebrow">{project.classification}</p>
-          <h1>{project.name}</h1>
-          <p className="project-page-subtitle">{project.subtitle}</p>
-          <ul className="discipline-list project-page-disciplines" aria-label={`${project.name} disciplines`}>
+          <p className="eyebrow hero-enter">{project.classification}</p>
+          <h1 className="hero-enter">{project.name}</h1>
+          <p className="project-page-subtitle hero-enter">{project.subtitle}</p>
+          <ul className="tag-list project-page-disciplines hero-enter" aria-label={`${project.name} disciplines`}>
             {project.disciplines.map((discipline) => (
               <li key={discipline}>{discipline}</li>
             ))}
@@ -102,11 +103,11 @@ function ProjectPage() {
 
       <section className="project-overview section" aria-labelledby="overview-title">
         <div className="container case-study-layout">
-          <header>
+          <header data-reveal>
             <p className="section-kicker">{project.context}</p>
             <h2 id="overview-title">Overview</h2>
           </header>
-          <div className="case-study-content project-intro">
+          <div className="case-study-content project-intro" data-reveal>
             {project.intro.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -133,7 +134,7 @@ function ProjectPage() {
           key={section.id}
         >
           <div className="container case-study-layout">
-            <header>
+            <header data-reveal>
               <p className="section-kicker">{String(index + 1).padStart(2, '0')}</p>
               <h2 id={`${section.id}-title`}>{section.heading}</h2>
             </header>
@@ -141,6 +142,23 @@ function ProjectPage() {
           </div>
         </section>
       ))}
+
+      {nextProject !== project && (
+        <nav className="project-next section" aria-label="More work">
+          <div className="container project-next-layout">
+            <Link className="back-link" to="/#selected-work">
+              <ArrowLeft size={17} aria-hidden="true" />
+              All selected work
+            </Link>
+            <Link className="project-next-card" to={`/projects/${nextProject.slug}`}>
+              <span className="section-kicker">Next project</span>
+              <span className="project-next-name">{nextProject.name}</span>
+              <span className="project-next-subtitle">{nextProject.subtitle}</span>
+              <ArrowRight className="project-next-arrow" size={22} aria-hidden="true" />
+            </Link>
+          </div>
+        </nav>
+      )}
     </article>
   );
 }
