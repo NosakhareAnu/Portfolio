@@ -1,6 +1,6 @@
 # Nosakhare Festus-Olagbende — Portfolio
 
-Professional portfolio for Nosakhare Festus-Olagbende, a Software Developer & Product Designer focused on user-centered digital products.
+Professional portfolio for Nosakhare Festus-Olagbende, a software developer working across full-stack web and mobile development, with growing experience in AI and machine learning and a background in product design.
 
 ## Current foundation
 
@@ -8,7 +8,7 @@ The homepage is organized around:
 
 - Hero and professional positioning (location and work authorization)
 - Work Experience
-- Capabilities
+- Technical capabilities
 - Selected Work
 - About (including education)
 - Contact

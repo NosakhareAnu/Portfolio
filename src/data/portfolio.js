@@ -1,16 +1,17 @@
 export const profile = {
   name: 'Nosakhare Festus-Olagbende',
   shortName: 'Nosakhare',
-  title: 'Software Developer & Product Designer',
+  title: 'Software Developer',
   introduction:
-    'I design thoughtful digital experiences and build the systems behind them — from product flows and interfaces to mobile applications, APIs, and data.',
+    "I build full-stack web and mobile applications, working on React interfaces, backend services, APIs, databases, and the application logic that connects them. I'm also developing deeper experience in AI and machine learning, and my background in product design helps me build software around how people actually use it.",
   heroProfile:
-    'Computer Science graduate working across software development and product design. I enjoy taking products from early ideas and user flows through interface design and implementation.',
+    "Computer Science graduate focused on software development, with frontend and full-stack internship experience. I'm currently building deeper skills in AI and machine learning.",
   location: 'Texas, USA',
   workAuthorization: 'No visa sponsorship required',
   about: [
-    "I'm a Computer Science graduate who enjoys working at the intersection of software engineering and product design. I like understanding how a product should work, designing an experience around that problem, and then turning those decisions into working software.",
-    "My work ranges from mobile and web development to interface design and backend systems. I'm particularly interested in products where usability, thoughtful interaction design, and solid engineering all matter.",
+    "I'm a Computer Science graduate focused on software development. Most of my experience is in frontend and full-stack work: React applications, backend services, REST APIs, authentication, databases, and mobile development with React Native.",
+    "I'm also building deeper skills in artificial intelligence and machine learning, mainly through Python and applied projects.",
+    "I've worked in product design too, and it still shapes how I build. It makes me think about user flows, information hierarchy, and usability before I start writing code. Software engineering, though, is the main direction of my career.",
   ],
   education: {
     institution: 'Pan-Atlantic University',
@@ -65,26 +66,13 @@ export const experience = [
     role: 'Product Design Intern',
     company: 'Cyncra Technologies',
     employmentType: 'Internship',
-    dates: 'Jul 2025 – Aug 2025',
-    duration: '2 months',
+    dates: 'Jul 2025 – Sep 2025',
+    duration: '3 months',
     location: 'Lagos, Nigeria · Remote',
     highlights: [
       'Designed and refined web and mobile interface layouts in Figma while contributing to shared design systems.',
       'Contributed to a website redesign, aligning interface decisions with updated brand and user experience goals.',
       'Participated in design reviews, team meetings, and collaborative ideation sessions to refine product interfaces and maintain consistency.',
-    ],
-  },
-  {
-    role: 'Media & Content Team Lead',
-    company: 'School of Science and Technology, Pan-Atlantic University',
-    employmentType: 'Volunteer · Part-time',
-    dates: 'Mar 2025 – Oct 2025',
-    duration: '8 months',
-    location: 'Lagos, Nigeria · Hybrid',
-    highlights: [
-      'Led a small team of video editors and graphic designers producing visual content for university communications and social media.',
-      'Edited and reviewed more than 10 promotional videos and short-form content pieces.',
-      'Coordinated with the communications team to maintain consistent visual direction and messaging across campaigns.',
     ],
   },
   {
@@ -104,7 +92,7 @@ export const experience = [
 
 export const pendingLinks = {
   resume: null,
-  productionUrl: null,
+  productionUrl: 'https://www.nosakhare.online/',
 };
 
 export const navigation = [
@@ -121,8 +109,9 @@ export const projects = [
     name: 'TrackChow',
     subtitle: 'Food Tracking Designed Around Nigerian Meals',
     classification: 'Built Product',
-    disciplines: ['Product Design', 'Mobile Development', 'Full-Stack Development'],
-    order: '01',
+    disciplines: ['Full-Stack Development', 'Mobile Development', 'Product Design'],
+    stackLabel: 'Built with',
+    stack: ['React Native', 'Expo', 'Node.js', 'Express.js', 'Supabase', 'PostgreSQL'],
     featured: true,
     context: 'Flagship project',
     cardDescription:
@@ -286,7 +275,9 @@ export const projects = [
     subtitle: 'Facility Management Dashboard',
     classification: 'Design Exploration',
     disciplines: ['Product Design', 'UI/UX Design', 'Dashboard Design', 'Figma'],
-    order: '02',
+    stackLabel: 'Designed in',
+    stack: ['Figma'],
+    cardNote: 'Design only. Not developed or deployed.',
     featured: false,
     context: 'Self-directed design exploration',
     cardDescription:
@@ -396,20 +387,34 @@ export const projects = [
   },
 ];
 
+// `tier` sets visual weight: primary (main focus), developing (active growth area), supporting (complementary).
 export const capabilities = [
   {
-    number: '01',
-    title: 'Software Development',
-    items: ['React', 'React Native', 'Next.js', 'Node.js', 'Python', 'PostgreSQL', 'Supabase', 'REST APIs'],
+    tier: 'primary',
+    title: 'Full-stack development',
+    summary:
+      'Responsive interfaces, backend services, REST APIs, authentication flows, and database-backed features, built end to end.',
+    groups: [
+      { label: 'Frontend', items: ['JavaScript', 'React', 'Next.js', 'HTML', 'CSS'] },
+      { label: 'Mobile', items: ['React Native'] },
+      { label: 'Backend', items: ['Node.js', 'Express', 'REST APIs'] },
+      { label: 'Data', items: ['PostgreSQL', 'Supabase', 'Firebase'] },
+      { label: 'Tools', items: ['Git'] },
+    ],
   },
   {
-    number: '02',
-    title: 'Product & UX',
-    items: ['Product Design', 'UI/UX Design', 'User Flows', 'Wireframing', 'Prototyping', 'Usability Testing', 'Figma'],
+    tier: 'developing',
+    status: 'Currently developing',
+    title: 'AI & machine learning',
+    summary:
+      'Building deeper experience with Python-based machine learning, model workflows, embeddings, retrieval, and applied AI projects.',
+    items: ['Python', 'Machine learning', 'PyTorch', 'Embeddings', 'Retrieval & RAG', 'Data processing'],
   },
   {
-    number: '03',
-    title: 'Product Engineering',
-    items: ['Responsive Interfaces', 'API Integration', 'Database Design', 'Authentication', 'System Design', 'Git'],
+    tier: 'supporting',
+    title: 'Product & interface design',
+    summary:
+      'My design background helps me think through user flows, information hierarchy, and interaction decisions in the interfaces I build.',
+    items: ['Figma', 'UI/UX design', 'User flows', 'Wireframing', 'Prototyping', 'Responsive interface design'],
   },
 ];

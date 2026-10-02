@@ -76,10 +76,7 @@ function Navbar() {
     <header className={`site-header${isScrolled || isOpen ? ' is-scrolled' : ''}`}>
       <div className="nav-shell">
         <Link className="brand" to="/" onClick={closeMenu} aria-label={`${profile.name}, home`}>
-          <span className="brand-mark" aria-hidden="true">
-            NF
-          </span>
-          <span className="brand-name">{profile.shortName}</span>
+          {profile.shortName}
         </Link>
 
         <nav className="desktop-nav" aria-label="Primary navigation">

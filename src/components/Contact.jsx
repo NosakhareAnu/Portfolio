@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowUpRight, Check, Copy, Mail } from 'lucide-react';
-import { contactLinks, profile } from '../data/portfolio';
+import { contactLinks } from '../data/portfolio';
 
 const email = contactLinks.find((link) => link.id === 'email');
 const profileLinks = contactLinks.filter((link) => link.external);
@@ -27,18 +27,12 @@ function Contact() {
     <section className="contact section" id="contact" aria-labelledby="contact-title">
       <div className="container">
         <div className="contact-panel" data-reveal>
-          <div>
-            <p className="section-kicker">Contact</p>
-            <h2 id="contact-title">Let’s discuss the work.</h2>
-            <p className="contact-facts">
-              {profile.location} · {profile.workAuthorization}
-            </p>
-          </div>
+          <h2 id="contact-title">Contact</h2>
 
           <div className="contact-content">
             <p>
-              For roles, collaborations, or a conversation about software and product design, use the contact options
-              below.
+              If you’re hiring for a software development role or want to ask about my work, email is the best way to
+              reach me.
             </p>
 
             <div className="contact-email">
