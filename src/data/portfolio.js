@@ -1,15 +1,13 @@
 export const profile = {
   name: 'Nosakhare Festus-Olagbende',
   shortName: 'Nosakhare',
-  title: 'Software Developer',
+  title: 'Software Developer & Product Designer',
   introduction:
-    "I build full-stack web and mobile applications, working on React interfaces, backend services, APIs, databases, and the application logic that connects them. I'm also developing deeper experience in AI and machine learning, and my background in product design helps me build software around how people actually use it.",
-  heroProfile:
-    "Computer Science graduate focused on software development, with frontend and full-stack internship experience. I'm currently building deeper skills in AI and machine learning.",
+    'I build web and mobile applications, from the interface people use to the services and data behind it. My background in product design shapes how I approach both.',
   location: 'Texas, USA',
   workAuthorization: 'No visa sponsorship required',
   about: [
-    "I'm a Computer Science graduate focused on software development. Most of my experience is in frontend and full-stack work: React applications, backend services, REST APIs, authentication, databases, and mobile development with React Native.",
+    "I'm a Computer Science graduate focused on software development. Most of my experience is in frontend and full-stack work: React applications, backend services, REST APIs, authentication, and databases.",
     "I'm also building deeper skills in artificial intelligence and machine learning, mainly through Python and applied projects.",
     "I've worked in product design too, and it still shapes how I build. It makes me think about user flows, information hierarchy, and usability before I start writing code. Software engineering, though, is the main direction of my career.",
   ],
@@ -55,24 +53,11 @@ export const experience = [
     employmentType: 'Internship',
     dates: 'Jul 2025 – Dec 2025',
     duration: '6 months',
-    location: 'Lagos, Nigeria · Remote',
+    location: 'Houston, Texas',
     highlights: [
       'Contributed to team development projects using React, Tailwind CSS, Firebase, and REST APIs across frontend and backend features.',
       'Implemented authentication flows, data handling, and responsive interface components as part of product development tasks.',
       'Collaborated with senior developers and mentors during sprint reviews, applying feedback to improve code structure, functionality, and implementation quality.',
-    ],
-  },
-  {
-    role: 'Product Design Intern',
-    company: 'Cyncra Technologies',
-    employmentType: 'Internship',
-    dates: 'Jul 2025 – Sep 2025',
-    duration: '3 months',
-    location: 'Lagos, Nigeria · Remote',
-    highlights: [
-      'Designed and refined web and mobile interface layouts in Figma while contributing to shared design systems.',
-      'Contributed to a website redesign, aligning interface decisions with updated brand and user experience goals.',
-      'Participated in design reviews, team meetings, and collaborative ideation sessions to refine product interfaces and maintain consistency.',
     ],
   },
   {
@@ -81,7 +66,7 @@ export const experience = [
     employmentType: 'Internship',
     dates: 'Jul 2024 – Sep 2024',
     duration: '3 months',
-    location: 'Lagos, Nigeria · Remote',
+    location: 'Houston, Texas',
     highlights: [
       'Assisted in developing and maintaining responsive web interfaces using React, HTML, and CSS.',
       'Translated design requirements into functional, user-friendly interface components.',
@@ -96,9 +81,9 @@ export const pendingLinks = {
 };
 
 export const navigation = [
+  { label: 'Work', hash: 'selected-work' },
   { label: 'Experience', hash: 'experience' },
   { label: 'Capabilities', hash: 'capabilities' },
-  { label: 'Work', hash: 'selected-work' },
   { label: 'About', hash: 'about' },
   { label: 'Contact', hash: 'contact' },
 ];
@@ -114,6 +99,23 @@ export const projects = [
     stack: ['React Native', 'Expo', 'Node.js', 'Express.js', 'Supabase', 'PostgreSQL'],
     featured: true,
     context: 'Flagship project',
+    role: 'Product Designer & Full-Stack Developer',
+    contents: [
+      { id: 'problem', label: 'The problem' },
+      { id: 'product-decisions', label: 'Product decisions' },
+      { id: 'engineering', label: 'Engineering' },
+      { id: 'testing-outcome', label: 'Testing & outcome' },
+    ],
+    visual: {
+      theme: 'trackchow',
+      headline: 'Familiar meals.\nFamiliar measures.',
+      caption: 'Meal-logging flow',
+      steps: [
+        { title: 'Find your food', detail: 'Nigerian meals' },
+        { title: 'Choose a serving', detail: 'Plates, bowls, wraps' },
+        { title: 'Log your meal', detail: 'Daily nutrition diary' },
+      ],
+    },
     cardDescription:
       'A mobile food-tracking application designed to make nutrition logging more practical for Nigerian users through familiar foods, realistic serving units, faster meal entry, and clear calorie and macronutrient feedback.',
     intro: [
@@ -280,6 +282,24 @@ export const projects = [
     cardNote: 'Design only. Not developed or deployed.',
     featured: false,
     context: 'Self-directed design exploration',
+    role: 'Product Designer',
+    contents: [
+      { id: 'design-challenge', label: 'The challenge' },
+      { id: 'information-architecture', label: 'Structure' },
+      { id: 'interface-decisions', label: 'Interface decisions' },
+      { id: 'reflection', label: 'Reflection' },
+    ],
+    visual: {
+      theme: 'agrion',
+      headline: 'A clearer view\nof the everyday.',
+      caption: 'Information architecture',
+      root: 'Dashboard',
+      steps: [
+        { title: 'My Facility', detail: 'Manage properties' },
+        { title: 'Bookings', detail: 'Review activity' },
+        { title: 'Earnings', detail: 'Track performance' },
+      ],
+    },
     cardDescription:
       'A product design exploration focused on organizing properties, bookings, earnings, notifications, and operational information into a clear dashboard experience for facility owners.',
     intro: [
@@ -396,10 +416,9 @@ export const capabilities = [
       'Responsive interfaces, backend services, REST APIs, authentication flows, and database-backed features, built end to end.',
     groups: [
       { label: 'Frontend', items: ['JavaScript', 'React', 'Next.js', 'HTML', 'CSS'] },
-      { label: 'Mobile', items: ['React Native'] },
-      { label: 'Backend', items: ['Node.js', 'Express', 'REST APIs'] },
+      { label: 'Backend', items: ['Python', 'Node.js', 'Express', 'REST APIs'] },
       { label: 'Data', items: ['PostgreSQL', 'Supabase', 'Firebase'] },
-      { label: 'Tools', items: ['Git'] },
+      { label: 'Tools', items: ['Git', 'Docker'] },
     ],
   },
   {

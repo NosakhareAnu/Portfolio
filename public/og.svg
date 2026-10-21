@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Nosakhare Festus-Olagbende</title>
+  <desc id="description">Software Developer and Product Designer. Web and mobile applications, from interface to implementation.</desc>
+  <style>
+    @font-face { font-family: 'Newsreader'; src: url('/fonts/newsreader-latin.woff2') format('woff2'); font-weight: 400 500; }
+    @font-face { font-family: 'Instrument Sans'; src: url('/fonts/instrument-sans-latin.woff2') format('woff2'); font-weight: 400 700; }
+    .sans { font-family: 'Instrument Sans', Arial, sans-serif; }
+    .display { font-family: 'Newsreader', Georgia, serif; font-weight: 400; letter-spacing: -3px; }
+  </style>
+  <rect width="1200" height="630" fill="#f6f6f1" />
+  <rect x="1168" width="32" height="630" fill="#1d4f43" />
+  <circle cx="83" cy="97" r="4" fill="#1d4f43" />
+  <text x="102" y="105" class="sans" font-size="23" fill="#1d4f43">Software Developer &amp; Product Designer</text>
+  <text x="78" y="255" class="display" font-size="98" fill="#202923">Nosakhare</text>
+  <text x="78" y="357" class="display" font-size="98" fill="#202923">Festus-Olagbende</text>
+  <text x="82" y="431" class="sans" font-size="25" fill="#616b63">Web and mobile applications, from interface to implementation.</text>
+  <path d="M82 497H1086" stroke="#d9ded4" />
+  <text x="82" y="547" class="sans" font-size="21" fill="#616b63">Texas, USA</text>
+  <text x="1086" y="547" text-anchor="end" class="sans" font-size="21" fill="#1d4f43">nosakhare.online</text>
+</svg>

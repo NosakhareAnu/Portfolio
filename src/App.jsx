@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
-import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import RevealOnScroll from './components/RevealOnScroll';
+import CustomCursor from './components/CustomCursor';
+import PageMetadata from './components/PageMetadata';
 import ScrollToLocation from './components/ScrollToLocation';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
@@ -11,8 +11,9 @@ import './styles/global.css';
 function App() {
   return (
     <>
+      <PageMetadata />
       <ScrollToLocation />
-      <RevealOnScroll />
+      <CustomCursor />
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
@@ -24,7 +25,6 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      <Footer />
     </>
   );
 }

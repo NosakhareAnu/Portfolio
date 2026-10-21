@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
-import { defaultTitle, profile, projects } from '../data/portfolio';
+import { projects } from '../data/portfolio';
+import ProjectVisual from '../components/ProjectVisual';
 import NotFound from './NotFound';
 
 function CaseStudyContent({ section }) {
@@ -26,25 +26,11 @@ function CaseStudyContent({ section }) {
 
       {section.items && (
         <div className="case-item-grid">
-          {section.items.map((item, index) => (
-            <article className="case-item" key={item.title} data-reveal>
-              <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+          {section.items.map((item) => (
+            <article className="case-item" key={item.title}>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
             </article>
-          ))}
-        </div>
-      )}
-
-      {section.screenshotSlots && (
-        <div className="screenshot-placeholder-grid">
-          {section.screenshotSlots.map((slot, index) => (
-            <figure className="screenshot-placeholder" key={slot}>
-              <div aria-hidden="true">
-                <span>Screenshot {String(index + 1).padStart(2, '0')}</span>
-              </div>
-              <figcaption>{slot}</figcaption>
-            </figure>
           ))}
         </div>
       )}
@@ -67,15 +53,6 @@ function ProjectPage() {
   const { slug } = useParams();
   const project = projects.find((item) => item.slug === slug);
 
-  useEffect(() => {
-    if (!project) return undefined;
-    document.title = `${project.name} — ${profile.name}`;
-
-    return () => {
-      document.title = defaultTitle;
-    };
-  }, [project]);
-
   if (!project) {
     return <NotFound />;
   }
@@ -90,24 +67,34 @@ function ProjectPage() {
             <ArrowLeft size={17} aria-hidden="true" />
             Selected work
           </Link>
-          <p className="eyebrow hero-enter">{project.classification}</p>
-          <h1 className="hero-enter">{project.name}</h1>
-          <p className="project-page-subtitle hero-enter">{project.subtitle}</p>
-          <ul className="tag-list project-page-disciplines hero-enter" aria-label={`${project.name} disciplines`}>
-            {project.disciplines.map((discipline) => (
-              <li key={discipline}>{discipline}</li>
-            ))}
-          </ul>
+          <div className="project-page-title-layout">
+            <div>
+              <p className="eyebrow">{project.classification}</p>
+              <h1>{project.name}</h1>
+              <p className="project-page-subtitle">{project.subtitle}</p>
+              <ul className="project-page-disciplines" aria-label={`${project.name} disciplines`}>
+                {project.disciplines.map((discipline) => <li key={discipline}>{discipline}</li>)}
+              </ul>
+            </div>
+            <nav className="case-navigation" aria-label="In this case study">
+              <p>In this case study</p>
+              {project.contents?.map((item) => (
+                <Link key={item.id} to={`#${item.id}`}>{item.label}</Link>
+              ))}
+            </nav>
+          </div>
         </div>
       </header>
 
+      <div className="container case-visual"><ProjectVisual project={project} /></div>
+
       <section className="project-overview section" aria-labelledby="overview-title">
         <div className="container case-study-layout">
-          <header data-reveal>
+          <header>
             <p className="section-kicker">{project.context}</p>
             <h2 id="overview-title">Overview</h2>
           </header>
-          <div className="case-study-content project-intro" data-reveal>
+          <div className="case-study-content project-intro">
             {project.intro.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -126,7 +113,7 @@ function ProjectPage() {
         </div>
       </section>
 
-      {project.sections.map((section, index) => (
+      {project.sections.filter((section) => !section.screenshotSlots).map((section) => (
         <section
           className="case-study-section section"
           id={section.id}
@@ -134,8 +121,7 @@ function ProjectPage() {
           key={section.id}
         >
           <div className="container case-study-layout">
-            <header data-reveal>
-              <p className="section-kicker">{String(index + 1).padStart(2, '0')}</p>
+            <header>
               <h2 id={`${section.id}-title`}>{section.heading}</h2>
             </header>
             <CaseStudyContent section={section} />

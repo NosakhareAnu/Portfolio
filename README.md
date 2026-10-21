@@ -1,53 +1,40 @@
 # Nosakhare Festus-Olagbende — Portfolio
 
-Professional portfolio for Nosakhare Festus-Olagbende, a software developer working across full-stack web and mobile development, with growing experience in AI and machine learning and a background in product design.
+A professional portfolio for a Software Developer & Product Designer based in Texas. Built with React 19, React Router, Vite, plain CSS, and Lucide icons.
 
-## Current foundation
-
-The homepage is organized around:
-
-- Hero and professional positioning (location and work authorization)
-- Work Experience
-- Technical capabilities
-- Selected Work
-- About (including education)
-- Contact
-
-TrackChow and Agrion are the current featured projects. TrackChow is identified as a built product, while Agrion is identified as a design exploration. Both stable case-study routes contain the supplied professional copy; TrackChow screenshot slots and external project links remain pending.
-
-## Technology
-
-- React 19
-- React Router
-- Vite
-- CSS
-- Lucide React
-
-## Local development
+## Develop and verify
 
 ```powershell
 npm ci
 npm run dev
-```
-
-Quality checks:
-
-```powershell
 npm run lint
 npm run build
+npm run preview
 ```
 
-## Content architecture
+The repository has no separate type-check or automated test script. Browser verification covers routes, mobile layouts, keyboard navigation, contact controls, and browser history.
 
-Shared profile, project, capability, navigation, and contact information lives in `src/data/portfolio.js`. Reusable layout components consume that data, while React Router provides shareable project URLs.
+## Design
 
-## Project routes
+The October 2026 redesign keeps the warm off-white and forest-green identity, with self-hosted Newsreader display type and Instrument Sans body type. Selected work follows the introduction, followed by Experience, Capabilities, About, and Contact. Motion is limited to an entrance and interaction feedback; reduced motion is supported.
 
-- `/projects/trackchow`
-- `/projects/agrion`
+Project visuals are original, labelled explanatory diagrams based on documented functionality. They are not application screenshots. Real TrackChow captures and Agrion design images are still needed.
 
-`vercel.json` provides the single-page application fallback needed when a project URL is opened or refreshed directly on Vercel.
+## Content and components
 
-## Legacy material
+`src/data/portfolio.js` is the source of truth for profile, experience, capabilities, contact links, project narratives, diagram content, and case-study contents links.
 
-The previous Try-On Virtualiser and SchoolMerch pages and assets were removed from the working tree. They remain available in git history.
+- `ProjectVisual` renders the project diagrams on the homepage and case studies.
+- `ProjectCard` presents the problem, role, stack, and case-study link.
+- `PageMetadata` updates page titles, descriptions, canonical URLs, and sharing metadata on navigation.
+- `ScrollToLocation` handles hashes, route focus, and browser history scroll restoration.
+
+Public routes remain `/`, `/projects/trackchow`, and `/projects/agrion`, with a not-found page. Existing Vercel SPA fallback configuration is preserved. Route metadata updates in the browser; static sharing crawlers receive the common metadata in `index.html`.
+
+Fonts and their OFL licenses are in `public/fonts/`. The social card is `public/og.png`, with editable vector source in `public/og.svg`. The existing favicon is retained.
+
+## Design skill
+
+The requested official Anthropic frontend-design skill was reviewed and installed project-locally in `.agents/skills/frontend-design/`, including its license. No runtime or npm dependencies were added. The skill is discoverable on subsequent turns.
+
+See `project_status.md` for decisions, verification, and remaining content needs. No deployment is performed by the development workflow.

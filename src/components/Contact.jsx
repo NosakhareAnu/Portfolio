@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowUpRight, Check, Copy, Mail } from 'lucide-react';
+import { ArrowUpRight, Check, Copy } from 'lucide-react';
 import { contactLinks } from '../data/portfolio';
 
 const email = contactLinks.find((link) => link.id === 'email');
@@ -26,8 +26,11 @@ function Contact() {
   return (
     <section className="contact section" id="contact" aria-labelledby="contact-title">
       <div className="container">
-        <div className="contact-panel" data-reveal>
-          <h2 id="contact-title">Contact</h2>
+        <div className="contact-panel">
+          <div className="contact-heading">
+            <h2 id="contact-title">Contact</h2>
+            <p className="contact-statement">Have something<br />in mind?</p>
+          </div>
 
           <div className="contact-content">
             <p>
@@ -36,11 +39,10 @@ function Contact() {
             </p>
 
             <div className="contact-email">
-              <a className="button button-primary" href={email.href}>
-                <Mail size={18} aria-hidden="true" />
-                <span>{email.actionLabel}</span>
+              <a className="contact-address" href={email.href}>
+                <span>{email.display}</span><ArrowUpRight size={23} aria-hidden="true" />
               </a>
-              <button className="button button-secondary" type="button" onClick={copyEmail}>
+              <button className="copy-button" type="button" onClick={copyEmail} aria-label={copied ? 'Email address copied' : `Copy email address: ${email.display}`}>
                 {copied ? <Check size={17} aria-hidden="true" /> : <Copy size={17} aria-hidden="true" />}
                 <span>{copied ? 'Copied' : 'Copy email'}</span>
               </button>
@@ -48,7 +50,6 @@ function Contact() {
                 {copied ? 'Email address copied to clipboard' : ''}
               </span>
             </div>
-            <p className="contact-address">{email.display}</p>
 
             <div className="contact-links">
               {profileLinks.map((link) => (

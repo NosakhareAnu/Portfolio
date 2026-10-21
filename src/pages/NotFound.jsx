@@ -1,16 +1,7 @@
-import { useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { defaultTitle, profile } from '../data/portfolio';
 
 function NotFound() {
-  useEffect(() => {
-    document.title = `Page not found — ${profile.name}`;
-    return () => {
-      document.title = defaultTitle;
-    };
-  }, []);
-
   return (
     <section className="not-found" aria-labelledby="not-found-title">
       <div className="container not-found-content">

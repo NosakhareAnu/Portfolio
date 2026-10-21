@@ -12,10 +12,10 @@ function Capabilities() {
     <section className="capabilities section" id="capabilities" aria-labelledby="capabilities-title">
       <div className="container">
         <div className="capabilities-panel">
-          <SectionHeading id="capabilities-title" title="Technical capabilities" />
+          <SectionHeading id="capabilities-title" title="Technical capabilities" intro="A development foundation, informed by design. Here’s what I work with and where I’m growing." />
 
           <div className="capability-main">
-            <article className="capability-primary" data-reveal>
+            <article className="capability-primary">
               <h3>{primary.title}</h3>
               <p className="capability-summary">{primary.summary}</p>
               <dl className="tech-groups">
@@ -28,7 +28,7 @@ function Capabilities() {
               </dl>
             </article>
 
-            <article className="capability-developing" data-reveal>
+            <article className="capability-developing">
               <p className="capability-status">{developing.status}</p>
               <h3>{developing.title}</h3>
               <p className="capability-summary">{developing.summary}</p>
@@ -40,7 +40,7 @@ function Capabilities() {
             </article>
           </div>
 
-          <article className="capability-supporting" data-reveal>
+          <article className="capability-supporting">
             <h3>{supporting.title}</h3>
             <p className="capability-summary">{supporting.summary}</p>
             <p className="capability-tools">{supporting.items.join(' · ')}</p>

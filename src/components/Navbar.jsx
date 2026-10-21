@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { navigation, profile } from '../data/portfolio';
@@ -9,15 +9,15 @@ function useActiveSection(enabled) {
   useEffect(() => {
     if (!enabled || !('IntersectionObserver' in window)) return undefined;
 
-    const sections = navigation
+    const sections = [document.querySelector('.hero'), ...navigation
       .map((item) => document.getElementById(item.hash))
-      .filter(Boolean);
+    ].filter(Boolean);
 
     // A thin band across the upper middle of the viewport decides which section is current.
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveHash(entry.target.id);
+          if (entry.isIntersecting) setActiveHash(entry.target.id || null);
         });
       },
       { rootMargin: '-35% 0px -60% 0px' },
@@ -33,6 +33,7 @@ function useActiveSection(enabled) {
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const menuButton = useRef(null);
   const { pathname } = useLocation();
   const activeHash = useActiveSection(pathname === '/');
 
@@ -49,7 +50,10 @@ function Navbar() {
     if (!isOpen) return undefined;
 
     const closeOnEscape = (event) => {
-      if (event.key === 'Escape') setIsOpen(false);
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+        menuButton.current?.focus();
+      }
     };
     window.addEventListener('keydown', closeOnEscape);
     return () => window.removeEventListener('keydown', closeOnEscape);
@@ -73,7 +77,9 @@ function Navbar() {
     });
 
   return (
-    <header className={`site-header${isScrolled || isOpen ? ' is-scrolled' : ''}`}>
+    <header className={`site-header${isScrolled || isOpen ? ' is-scrolled' : ''}`} onBlur={(event) => {
+      if (!event.currentTarget.contains(event.relatedTarget)) closeMenu();
+    }}>
       <div className="nav-shell">
         <Link className="brand" to="/" onClick={closeMenu} aria-label={`${profile.name}, home`}>
           {profile.shortName}
@@ -84,6 +90,7 @@ function Navbar() {
         </nav>
 
         <button
+          ref={menuButton}
           className="menu-toggle"
           type="button"
           aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
